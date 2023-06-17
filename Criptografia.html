@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br"> 
+<head>
+	<meta charset="UTF-8">
+	<title>Criptografia</title>
+	<link rel="stylesheet" href="Criptografia.css">	
+</head>
+<body>
+	<header>
+		<h1><img src="C:\Users\lucas\Downloads\Vector.png"></h1>
+		
+	</header>
+
+	
+		<div class="container">
+        <main>
+            <textarea class="input-texto" placeholder="Digite seu texto" cols="30" rows="10"></textarea>
+
+            <div class="regras">
+                <p class="letras">Apenas letras minúsculas e sem acento</p>
+            </div>
+
+            <div class="buttons">
+                <button onclick="criptografar()" class="criptografar">Criptografar</button>
+                <button onclick="descriptografar()" class="descriptografar">Descriptografar</button>
+            </div>
+        </main>
+
+        <aside>
+            <div id="output">
+                <h2>Sua mensagem aparecerá aqui!</h2>
+            </div>
+          <div><button class="copiar">Copiar</button></div>
+        </aside>
+				 
+    </div>
+    <footer>
+        <p> Criando por Samara da Silva - 2023</p>
+    </footer>
+	<script>
+
+       const button = document.querySelector('.copiar');
+        button.addEventListener('click', () => {
+            const texto = document.querySelector('#output textarea').value;
+            navigator.clipboard.writeText(texto);
+            alert('Texto copiado!');
+        });
+
+
+        let texInput = document.querySelector(".input-texto");
+        let output = document.querySelector("#output");
+
+        function criptografar() {
+            let texto = texInput.value;
+
+            let resultcripto = texto.replace(/e/g, "enter").replace(/i/g, "imes").replace(/a/g, "ai").replace(/o/g, "ober").replace(/u/g, "ufat");
+
+            document.getElementById('output').innerHTML = "<textarea readonly id='input-texto'>" + resultcripto + "</textarea>";
+        }
+
+        function descriptografar() {
+            let texto = texInput.value;
+
+            let resultdescripto = texto.replace(/enter/g, "e").replace(/imes/g, "i").replace(/ai/g, "a").replace(/ober/g, "o").replace(/ufat/g, "u");
+
+            document.getElementById('output').innerHTML = "<textarea readonly id='texto' readonly>" + resultdescripto + "</textarea>";
+        }
+		
+	</script>
+
+</body>	
+</html>
